@@ -1,0 +1,36 @@
+version: '3'
+services:
+  php:
+    image: php:8.3-fpm
+    container_name: bigdata-php
+    volumes:
+      - ./php:/var/www/html
+    working_dir: /var/www/html
+    build:
+        context: ./php
+        dockerfile: Dockerfile
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0.38
+    container_name: bigdata-db
+    environment:
+      MYSQL_DATABASE: bigdata_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_CHARSET: utf8
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+  composer:
+    image: composer:2
+    container_name: bigdata-composer
+    volumes:
+      - ./php:/app
+    command: install
+    working_dir: /app
+volumes:
+    mysql_data:
