@@ -4,7 +4,7 @@
 
 ```shell
 # start docker
-docker-compose up -d
+docker compose up -d
 
 # composer install
 docker compose exec php composer install 

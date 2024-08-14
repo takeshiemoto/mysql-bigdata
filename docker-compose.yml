@@ -25,12 +25,5 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
-  composer:
-    image: composer:2
-    container_name: bigdata-composer
-    volumes:
-      - ./php:/app
-    command: install
-    working_dir: /app
 volumes:
     mysql_data:

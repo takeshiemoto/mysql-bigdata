@@ -10,7 +10,7 @@ $pdo->beginTransaction();
 $stmt = $pdo->query("SELECT id FROM genders");
 $genderIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-$batchSize = 10000;
+$batchSize = 1000;
 $valueStrings = [];
 $valueData = [];
 
