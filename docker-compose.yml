@@ -1,14 +1,13 @@
 version: '3'
 services:
   php:
-    image: php:8.3-fpm
+    build:
+      context: ./php
+      dockerfile: Dockerfile
     container_name: bigdata-php
+    working_dir: /var/www/html
     volumes:
       - ./php:/var/www/html
-    working_dir: /var/www/html
-    build:
-        context: ./php
-        dockerfile: Dockerfile
     depends_on:
       - mysql
   mysql:

@@ -4,7 +4,7 @@
 
 ```shell
 # start docker
-docker compose up -d
+make init
 
 # composer install
 docker compose exec php composer install 
@@ -15,11 +15,9 @@ docker compose exec php php script.php
 ## Usage
 
 ```shell
-# login user
-docker compose exec mysql mysql -u user -p
-
-# login root
-# パスワード不要
-docker compose exec mysql mysql -u root -p
+# login user password = password
+make mysql-user
+# or
+# login root password = empty
+make mysql-root
 ```
-password: password
