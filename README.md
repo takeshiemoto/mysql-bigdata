@@ -15,7 +15,11 @@ docker compose exec php php script.php
 ## Usage
 
 ```shell
-# login mysql
+# login user
 docker compose exec mysql mysql -u user -p
+
+# login root
+# パスワード不要
+docker compose exec mysql mysql -u root -p
 ```
 password: password

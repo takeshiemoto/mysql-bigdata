@@ -24,6 +24,8 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/log:/var/log/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
     mysql_data:
